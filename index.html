@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>CDC Alumni Photobook</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+  <script src="firebase/firebaseConfig.js" defer></script>
+  <script src="js/public.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>📸 CDC Alumni Photobook</h1>
+    <p>Direktori Alumni Kelas CDC 2024 & 2025</p>
+  </header>
+
+  <section class="filter">
+    <input type="text" id="search" placeholder="Cari nama..." oninput="applyFilters()">
+
+<select id="filter-kelas" onchange="applyFilters()">
+  <option value="">Semua Kelas</option>
+</select>
+
+<select id="filter-sekolah" onchange="applyFilters()">
+  <option value="">Semua Sekolah</option>
+</select>
+
+<select id="filter-kota" onchange="applyFilters()">
+  <option value="">Semua Kota</option>
+</select>
+
+  </section>
+
+  <section id="daftar-alumni" class="grid-alumni"></section>
+  
+</body>
+</html>

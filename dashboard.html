@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - CDC Alumni Photobook</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin-dashboard.css"> <!-- Link untuk CSS Dashboard -->
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>Selamat Datang Pendamping Kelas</h1>
+    <button id="logoutBtn">Keluar</button>
+  </header>
+
+  <!-- Dashboard Admin -->
+  <section id="admin-dashboard">
+    <div class="admin-actions">
+      <button id="addStudentBtn">Tambah Siswa</button>
+      <button id="viewStudentsBtn">Lihat Siswa</button>
+      <button id="filterBtn">Filter Siswa</button>
+    </div>
+
+  <!-- Section Filter untuk pencarian siswa -->
+<section id="filter-section">
+  <input type="text" id="searchInput" placeholder="Cari nama siswa..." />
+  
+  <select id="filterClass">
+    <option value="">Semua Kelas</option>
+    <option value="2024">CDC 2024</option>
+    <option value="2025">CDC 2025</option>
+  </select>
+  
+  <select id="filterSchool">
+    <option value="">Semua Sekolah</option>
+    <option value="SMA 1">SMA 1</option>
+    <option value="SMA 2">SMA 2</option>
+  </select>
+  
+  <select id="filterCity">
+    <option value="">Semua Kota</option>
+    <option value="Jakarta">Jakarta</option>
+    <option value="Bandung">Bandung</option>
+  </select>
+</section>
+
+<!-- Loading Spinner -->
+<div id="loading" style="display: none;">Loading...</div>
+
+<!-- Daftar siswa -->
+<div id="studentsList">
+  <!-- Daftar siswa akan ditampilkan di sini -->
+</div>
+
+
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-storage.js"></script>
+  <script src="js/admin-dashboard.js"></script> <!-- Link ke file JS Dashboard -->
+</body>
+</html>

@@ -1,0 +1,250 @@
+/* ========== RESET & BASE ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #1d4ed8; /* Lebih gelap dan profesional */
+  --secondary: #9ca3af; /* Warna netral untuk elemen sekunder */
+  --background: #f4f4f9; /* Background yang lebih terang */
+  --text-main: #111827; /* Warna teks utama gelap */
+  --text-sub: #6b7280; /* Teks sekunder lebih ringan */
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --radius: 10px; /* Radius lebih halus */
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Font yang lebih modern */
+  background: var(--background);
+  color: var(--text-main);
+  padding: 40px 20px;
+  line-height: 1.6;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========== HEADER & TITLE ========== */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, rgba(29,78,216,0.1), transparent);
+  padding: 40px 20px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+header p {
+  font-size: 1.25rem;
+  color: var(--text-sub);
+  margin-top: 5px;
+}
+
+/* ========== FILTER BAR ========== */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.filter input,
+.filter select {
+  padding: 12px 20px;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius);
+  min-width: 220px;
+  font-size: 1.1rem;
+  background-color: var(--white);
+  transition: 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.filter input:focus,
+.filter select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.2);
+}
+
+.filter input::placeholder,
+.filter select:focus::placeholder {
+  color: var(--secondary);
+}
+
+.filter select option {
+  color: var(--text-main);
+}
+
+/* ========== GRID ========== */
+.grid-alumni {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 10px;
+}
+
+/* ========== ALUMNI CARD ========== */
+.card {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: 0 6px 15px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  width: 180%;
+  height: 180%;
+  background: linear-gradient(135deg, rgba(29,78,216,0.1), transparent);
+  transform: rotate(20deg);
+  z-index: 0;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  z-index: 1;
+  position: relative;
+}
+
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 6px;
+  color: var(--text-main);
+  z-index: 1;
+  position: relative;
+}
+
+.card p {
+  font-size: 1rem;
+  color: var(--text-sub);
+  z-index: 1;
+  position: relative;
+}
+
+/* ========== FOOTER INFO ========== */
+.card-footer {
+  background: rgba(29, 78, 216, 0.1);
+  color: var(--text-main);
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.card-footer:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.card-footer a {
+  color: var(--primary);
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.card-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  background-color: #111827;
+  padding: 40px 0;
+  color: var(--white);
+  text-align: center;
+  border-top: 1px solid #333;
+}
+
+footer h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+footer .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+footer .social-icons a {
+  color: var(--white);
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+footer .social-icons a:hover {
+  color: var(--primary);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.4rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .filter input,
+  .filter select {
+    min-width: 160px;
+  }
+
+  .card img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  header p {
+    font-size: 1rem;
+  }
+
+  .card img {
+    height: 200px;
+  }
+}

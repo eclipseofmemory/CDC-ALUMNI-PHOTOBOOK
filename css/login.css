@@ -1,0 +1,113 @@
+/* ========== RESET & BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0ea5e9;
+  }
+  
+  header p {
+    font-size: 1.1rem;
+    color: #64748b;
+  }
+  
+  /* ========== LOGIN FORM ========== */
+  .login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    font-size: 1rem;
+    color: #475569;
+    margin-bottom: 8px;
+  }
+  
+  input {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #ffffff;
+    transition: border 0.3s ease;
+  }
+  
+  input:focus {
+    border-color: #0ea5e9;
+  }
+  
+  button {
+    padding: 14px;
+    font-size: 1.1rem;
+    background-color: #0ea5e9;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0284c7;
+  }
+  
+  /* ========== ERROR MESSAGE ========== */
+  .error-message {
+    color: #d32f2f;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  /* ========== FOOTER ========== */
+  footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  footer a {
+    color: #0ea5e9;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
