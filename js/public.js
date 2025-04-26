@@ -1,6 +1,7 @@
 const sheetID = '1v9BgMMHbQh5NnLa2OVjJ-KX99z9o2AD03IUGPYUA1ug';
 const sheetName = 'Sheet1';
-const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+const url = "/api/students"; // memanggil ke backend server lokal
+
 
 let allStudents = [];
 
@@ -71,6 +72,7 @@ function renderCards(data) {
   data.forEach(student => {
     const card = document.createElement("div");
     card.className = "card";
+    const photoUrl = `https://drive.google.com/uc?export=view&id=${student.photoUrl}`;
     card.innerHTML = `
       <img src="${photoUrl}" alt="${student.name}">
       <h3>${student.name}</h3>

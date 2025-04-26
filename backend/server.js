@@ -1,13 +1,16 @@
 const express = require("express"); // Mengimpor Express untuk membuat aplikasi server
 const axios = require("axios");    // Mengimpor Axios untuk melakukan request HTTP
+const path = require("path");
+
 
 const app = express();  // Membuat instance aplikasi Express
 const port = 3000;      // Menentukan port untuk server
 
-// URL untuk mengambil data dari Google Sheets
-const sheetID = '1v9BgMMHbQh5NnLa2OVjJ-KX99z9o2AD03IUGPYUA1ug';
+const sheetID = '1v9BgMMHbQh5NnLa2OVjJ-KX99z9o2AD03IUGPYUA1ug'; // ID dari Google Sheets kamu
 const sheetName = 'Sheet1';
 const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
+
+app.use(express.static(path.join(__dirname, "..")));
 
 // Membuat endpoint untuk mengambil data dari Google Sheets
 app.get("/api/students", async (req, res) => {
