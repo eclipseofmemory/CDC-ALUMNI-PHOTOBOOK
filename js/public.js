@@ -71,7 +71,6 @@ function renderCards(data) {
   data.forEach(student => {
     const card = document.createElement("div");
     card.className = "card";
-    const photoUrl = `https://drive.google.com/uc?export=view&id=${student.photoUrl}`;
     card.innerHTML = `
       <img src="${photoUrl}" alt="${student.name}">
       <h3>${student.name}</h3>
