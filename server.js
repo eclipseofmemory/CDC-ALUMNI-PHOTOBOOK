@@ -25,6 +25,11 @@ app.get("/api/students", async (req, res) => {
   }
 });
 
+// Fallback agar route selain /api tetap mengarah ke index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 // Menjalankan server pada port yang ditentukan
 app.listen(PORT, () => {
   console.log(`Server berjalan di port ${PORT}`);
