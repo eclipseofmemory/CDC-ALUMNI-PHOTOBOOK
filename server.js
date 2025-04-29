@@ -4,7 +4,8 @@ const path = require("path");
 
 
 const app = express();  // Membuat instance aplikasi Express
-const port = 3000;      // Menentukan port untuk server
+const PORT = process.env.PORT || 3000;
+
 
 const sheetID = '1v9BgMMHbQh5NnLa2OVjJ-KX99z9o2AD03IUGPYUA1ug'; // ID dari Google Sheets kamu
 const sheetName = 'Sheet1';
@@ -25,6 +26,6 @@ app.get("/api/students", async (req, res) => {
 });
 
 // Menjalankan server pada port yang ditentukan
-app.listen(port, () => {
-  console.log(`Server berjalan di http://localhost:${port}/api/students`);
+app.listen(PORT, () => {
+  console.log(`Server berjalan di port ${PORT}`);
 });
