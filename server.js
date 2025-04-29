@@ -11,7 +11,7 @@ const sheetID = '1v9BgMMHbQh5NnLa2OVjJ-KX99z9o2AD03IUGPYUA1ug'; // ID dari Googl
 const sheetName = 'Sheet1';
 const url = `https://opensheet.elk.sh/${sheetID}/${sheetName}`;
 
-app.use(express.static(path.join(__dirname, "..")));
+app.use(express.static(__dirname));
 
 // Membuat endpoint untuk mengambil data dari Google Sheets
 app.get("/api/students", async (req, res) => {
