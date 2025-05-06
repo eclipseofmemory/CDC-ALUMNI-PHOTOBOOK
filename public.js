@@ -72,7 +72,10 @@ function renderCards(data) {
   data.forEach(student => {
     const card = document.createElement("div");
     card.className = "card";
-    const photoUrl = `https://drive.google.com/uc?export=view&id=${student.photoUrl}`;
+    
+    // Gunakan photoUrl langsung jika sudah dalam format yang benar
+    const photoUrl = student.photoUrl ? student.photoUrl : 'default-image-url.jpg'; // Ganti dengan URL gambar default jika tidak ada
+    console.log(photoUrl)
     card.innerHTML = `
       <img src="${photoUrl}" alt="${student.name}">
       <h3>${student.name}</h3>
