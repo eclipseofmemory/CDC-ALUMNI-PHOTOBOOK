@@ -1,7 +1,4 @@
-const sheetID = '1v9BgMMHbQh5NnLa2OVjJ-KX99z9o2AD03IUGPYUA1ug';
-const sheetName = 'Sheet1';
 const url = "/api/students"; // memanggil ke backend server lokal
-
 
 let allStudents = [];
 
@@ -72,12 +69,12 @@ function renderCards(data) {
   data.forEach(student => {
     const card = document.createElement("div");
     card.className = "card";
-    
-    // Gunakan photoUrl langsung jika sudah dalam format yang benar
-    const photoUrl = student.photoUrl ? student.photoUrl : 'default-image-url.jpg'; // Ganti dengan URL gambar default jika tidak ada
-    console.log(photoUrl)
+
+    const rawUrl = student.photoUrl ? student.photoUrl : 'default.jpg';
+    const photoUrl = convertToDirectLink(rawUrl);
+
     card.innerHTML = `
-      <img src="${photoUrl}" alt="${student.name}">
+      <img src="${photoUrl}" alt="${student.name}" onerror="this.src='default.jpg'">
       <h3>${student.name}</h3>
       <p>${student.school}</p>
       <p>${student.class} - ${student.city}</p>
@@ -85,3 +82,29 @@ function renderCards(data) {
     container.appendChild(card);
   });
 }
+
+async function fetchData() {
+  const res = await fetch(URL);
+  const data = await res.json();
+
+  const container = document.getElementById('data-container');
+  container.innerHTML = '';
+
+  data.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const img = document.createElement('img');
+    img.src = `https://drive.google.com/thumbnail?id=${item.FotoIDGoogleDrive}&sz=w300`;
+    img.alt = item.Nama;
+
+    const name = document.createElement('h3');
+    name.textContent = item.Nama;
+
+    card.appendChild(img);
+    card.appendChild(name);
+    container.appendChild(card);
+  });
+}
+
+fetchData();
