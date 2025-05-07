@@ -57,54 +57,43 @@ function applyFilters() {
   renderCards(filtered);
 }
 
-function renderCards(data) {
+// Fungsi untuk menampilkan kartu alumni dengan gambar dari Firebase Storage
+async function renderCards(data) {
   const container = document.getElementById("daftar-alumni");
-  container.innerHTML = "";
+  container.innerHTML = ""; // Kosongkan kontainer terlebih dahulu
 
   if (data.length === 0) {
     container.innerHTML = "<p>Tidak ada data ditemukan.</p>";
     return;
   }
 
-  data.forEach(student => {
+  for (const student of data) {
     const card = document.createElement("div");
     card.className = "card";
 
-    const rawUrl = student.photoUrl ? student.photoUrl : 'default.jpg';
-    const photoUrl = convertToDirectLink(rawUrl);
+    const photoPath = "cdcstudentphotos/" + student.photoUrl;
+    const photoUrl = student.photoUrl
+      ? await getPhotoFromStorage(photoPath)
+      : "default-image-url.jpg";
 
     card.innerHTML = `
-      <img src="${photoUrl}" alt="${student.name}" onerror="this.src='default.jpg'">
+      <img src="${photoUrl}" alt="${student.name}">
       <h3>${student.name}</h3>
       <p>${student.school}</p>
       <p>${student.class} - ${student.city}</p>
     `;
     container.appendChild(card);
-  });
+  }
 }
 
-async function fetchData() {
-  const res = await fetch(URL);
-  const data = await res.json();
-
-  const container = document.getElementById('data-container');
-  container.innerHTML = '';
-
-  data.forEach(item => {
-    const card = document.createElement('div');
-    card.className = 'card';
-
-    const img = document.createElement('img');
-    img.src = `https://drive.google.com/thumbnail?id=${item.FotoIDGoogleDrive}&sz=w300`;
-    img.alt = item.Nama;
-
-    const name = document.createElement('h3');
-    name.textContent = item.Nama;
-
-    card.appendChild(img);
-    card.appendChild(name);
-    container.appendChild(card);
-  });
+async function getPhotoFromStorage(photoPath) {
+  const storageRef = ref(storage, photoPath); // Menggunakan referensi Firebase storage
+  try {
+    const url = await getDownloadURL(storageRef); // Mendapatkan URL download
+    return url;
+  } catch (error) {
+    console.error("Gagal mengambil foto:", error);
+    return "default-image-url.jpg";
+  }
 }
 
-fetchData();
