@@ -7,7 +7,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyBS-kGqwEfmJyBThePAbsbQTZ6DmPTuDRM",
   authDomain: "cdcdisdiksulsel.firebaseapp.com",
   projectId: "cdcdisdiksulsel",
-  storageBucket: "cdcdisdiksulsel.appspot.com", // ✅ PERBAIKI INI!
+  storageBucket: "cdcdisdiksulsel.firebasestorage.app,
   messagingSenderId: "562294744066",
   appId: "1:562294744066:web:04aebeaaf6766ce650b31b",
   measurementId: "G-WHJS723DPZ"

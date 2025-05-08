@@ -1,4 +1,4 @@
-const url = "/api/students"; // memanggil ke backend server lokal
+const url = "/api/students"; // Memanggil ke backend server lokal
 
 let allStudents = [];
 
@@ -58,7 +58,7 @@ function applyFilters() {
 }
 
 // Fungsi untuk menampilkan kartu alumni dengan gambar dari Firebase Storage
-async function renderCards(data) {
+function renderCards(data) {
   const container = document.getElementById("daftar-alumni");
   container.innerHTML = ""; // Kosongkan kontainer terlebih dahulu
 
@@ -67,33 +67,22 @@ async function renderCards(data) {
     return;
   }
 
-  for (const student of data) {
+  data.forEach(student => {
     const card = document.createElement("div");
     card.className = "card";
 
-    const photoPath = "cdcstudentphotos/" + student.photoUrl;
-    const photoUrl = student.photoUrl
-      ? await getPhotoFromStorage(photoPath)
-      : "default-image-url.jpg";
+    // Membuat URL gambar dengan format Firebase Storage
+    const filename = student.name.toLowerCase().replace(/\s+/g, "_") + ".jpg";
+    const photoUrl = `https://firebasestorage.googleapis.com/v0/b/cdcdisdiksulsel.firebasestorage.app/o/cdcstudentphotos%2F${filename}?alt=media`;
+
 
     card.innerHTML = `
-      <img src="${photoUrl}" alt="${student.name}">
-      <h3>${student.name}</h3>
-      <p>${student.school}</p>
-      <p>${student.class} - ${student.city}</p>
-    `;
+  <img src="${photoUrl}" alt="${student.name}" onerror="this.src='default.jpg';">
+  <h3>${student.name}</h3>
+  <p>${student.school}</p>
+  <p>${student.class} - ${student.city}</p>
+`;
+
     container.appendChild(card);
-  }
+  });
 }
-
-async function getPhotoFromStorage(photoPath) {
-  const storageRef = ref(storage, photoPath); // Menggunakan referensi Firebase storage
-  try {
-    const url = await getDownloadURL(storageRef); // Mendapatkan URL download
-    return url;
-  } catch (error) {
-    console.error("Gagal mengambil foto:", error);
-    return "default-image-url.jpg";
-  }
-}
-
