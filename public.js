@@ -57,7 +57,7 @@ function applyFilters() {
   renderCards(filtered);
 }
 
-// Fungsi untuk menampilkan kartu alumni dengan gambar dari Firebase Storage
+// Fungsi untuk menampilkan kartu alumni dengan gambar dari URL lokal
 function renderCards(data) {
   const container = document.getElementById("daftar-alumni");
   container.innerHTML = ""; // Kosongkan kontainer terlebih dahulu
@@ -71,18 +71,18 @@ function renderCards(data) {
     const card = document.createElement("div");
     card.className = "card";
 
-    // Membuat URL gambar dengan format Firebase Storage
-    const filename = student.name.toLowerCase().replace(/\s+/g, "_") + ".jpg";
-    const photoUrl = `https://firebasestorage.googleapis.com/v0/b/cdcdisdiksulsel.firebasestorage.app/o/cdcstudentphotos%2F${filename}?alt=media`;
-
+    // Menggunakan URL gambar lokal atau dari backend
+    const photoUrl = student.photoUrl || 'default.jpg'; // URL foto lokal atau default jika tidak ada
 
     card.innerHTML = `
-  <img src="${photoUrl}" alt="${student.name}" onerror="this.src='default.jpg';">
-  <h3>${student.name}</h3>
-  <p>${student.school}</p>
-  <p>${student.class} - ${student.city}</p>
-`;
+      <img src="${photoUrl}" alt="${student.name}" onerror="this.src='default.jpg';">
+      <h3>${student.name}</h3>
+      <p>${student.school}</p>
+      <p>${student.class} - ${student.city}</p>
+    `;
 
     container.appendChild(card);
   });
 }
+
+window.applyFilters = applyFilters;
