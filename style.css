@@ -30,8 +30,6 @@ body {
   font-family: 'Roboto', sans-serif;
   background: var(--background);
   background-image: url('Water.jpg');
-  background-size: cover;
-  background-position: center;
   color: var(--text-main);
   padding: 40px 20px;
   line-height: 1.6;
