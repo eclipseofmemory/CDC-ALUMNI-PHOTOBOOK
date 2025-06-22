@@ -1,296 +1,108 @@
-/* ========== RESET & BASE ========== */
+/* Reset dasar */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --primary: #1d4ed8; /* Lebih gelap dan profesional */
-  --secondary: #9ca3af; /* Warna netral untuk elemen sekunder */
-  --background: #f4f4f9; /* Background yang lebih terang */
-  --text-main: #111827; /* Warna teks utama gelap */
-  --text-sub: #6b7280; /* Teks sekunder lebih ringan */
-  --white: #ffffff;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --radius: 10px; /* Radius lebih halus */
-}
-
-:root {
-  --primary: #00cccc;
-  --secondary: #66ffff;
-  --background: linear-gradient(to bottom right, #004d66, #009999);
-  --white: rgba(255, 255, 255, 0.1);
-  --text-main: #e0ffff;
-  --radius: 12px;
-  --shadow: rgba(0, 204, 204, 0.15);
-}
-
 body {
-  font-family: 'Roboto', sans-serif;
-  background: var(--background);
-  background-image: url('Water.jpg');
-  color: var(--text-main);
-  padding: 40px 20px;
-  line-height: 1.6;
-  max-width: 1200px;
-  margin: 0 auto;
+  font-family: sans-serif;
+  color: #333;
+  padding: 20px;
 }
 
-/* ========== HEADER & TITLE ========== */
+/* Header */
 header {
   text-align: center;
-  margin-bottom: 40px;
-  background: linear-gradient(135deg, rgba(0, 204, 204, 0.1), transparent), rgba(0, 76, 102, 0.6);
-  padding: 40px 20px;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+  background-image: url(bloom.jpeg);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 header h1 {
-  font-size: 3rem;
-  font-weight: 700;
+  font-size: 2rem;
   margin-bottom: 10px;
-  color: #b2ffff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-shadow: 0 2px 4px rgba(0, 255, 255, 0.3);
 }
 
 header p {
-  font-size: 1.25rem;
-  color: #d9ffff;
-  margin-top: 5px;
+  font-size: 1rem;
 }
 
-/* ========== FILTER BAR ========== */
+/* Filter input dan select */
 .filter {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 10px;
   justify-content: center;
-  margin-bottom: 40px;
+  margin: 20px 0;
 }
 
 .filter input,
 .filter select {
-  padding: 12px 20px;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  border-radius: var(--radius);
-  min-width: 220px;
-  font-size: 1.1rem;
-  background-color: rgba(0, 76, 102, 0.6);
-  color: #e0ffff;
-  box-shadow: 0 2px 8px rgba(0, 255, 255, 0.2);
-  transition: 0.3s ease;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  min-width: 180px;
 }
 
-.filter input:focus,
-.filter select:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.3);
-}
-
-.filter input::placeholder,
-.filter select::placeholder {
-  color: #b2ffff;
-}
-
-.filter select option {
-  color: #004d66;
-}
-
-/* ========== GRID ========== */
+/* Grid untuk kartu */
 .grid-alumni {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  padding: 10px;
-  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-
+/* Kartu */
 .card {
-  max-width: 300px;
-  width: 100%;
-  background: rgba(0, 76, 102, 0.85); /* mirip kalkulator ocean */
-  padding: 20px;
-  border-radius: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
   text-align: center;
-  box-shadow: 0 0 25px #00cccc;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
-  overflow: hidden;
-  transform: translateY(0);
-  color: #ffffff;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -30%;
-  width: 180%;
-  height: 180%;
-  background: linear-gradient(135deg, rgba(0, 204, 204, 0.1), transparent);
-  transform: rotate(20deg);
-  z-index: 0;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 255, 255, 0.3);
+  width: 100%;
+  max-width: 300px; /* Jangan melebihi ini */
+  margin: 0 auto;
 }
 
 .card img {
   width: 100%;
-  height: 250px;
+  height: 200px;
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 15px;
-  z-index: 1;
-  position: relative;
-  border: 2px solid #00cccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 6px;
-  color: #e0ffff;
-  z-index: 1;
-  position: relative;
+  font-size: 1.2rem;
+  margin: 10px 0 5px;
 }
 
 .card p {
-  font-size: 1rem;
-  color: #b2ffff;
-  z-index: 1;
-  position: relative;
+  font-size: 0.9rem;
+  color: #666;
 }
 
-.card-footer {
-  background: rgba(0, 153, 153, 0.3);
-  color: #ffffff;
-  font-size: 1rem;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 16px;
-  font-weight: 600;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 10px #00ffff;
-  transition: transform 0.3s ease;
-}
-
-.card-footer:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 12px rgba(0, 255, 255, 0.3);
-}
-
-.card-footer a {
-  color: #b2ffff;
-  text-decoration: none;
-  margin-left: 5px;
-}
-
-.card-footer a:hover {
-  text-decoration: underline;
-}
-
-/* ========== FOOTER ========== */
+/* Footer */
 footer {
-  background-color: #111827;
-  padding: 40px 0;
-  color: var(--white);
   text-align: center;
-  border-top: 1px solid #333;
+  padding: 30px 0;
+  background-color: #333;
+  color: white;
+  margin-top: 40px;
 }
 
-footer h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-footer .social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-}
-
-footer .social-icons a {
-  color: var(--white);
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
-}
-
-footer .social-icons a:hover {
-  color: var(--primary);
-}
-
-/* ========== RESPONSIVE ========== */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 600px) {
   header h1 {
-    font-size: 2.4rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  .filter input,
-  .filter select {
-    min-width: 160px;
+    font-size: 1.5rem;
   }
 
   .card img {
-    height: 220px;
+    height: 150px;
   }
-}
 
-@media (max-width: 480px) {
   .filter {
     flex-direction: column;
-    gap: 10px;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-  }
-
-  .card img {
-    height: 200px;
-  }
-}
-
-.ikan {
-  position: fixed;
-  left: -100px;
-  width: 60px;
-  height: 60px;
-  background: url('shoal.png') no-repeat center;
-  background-size: contain;
-  animation: berenang linear infinite;
-  opacity: 0.8;
-  z-index: 1;
-}
-
-@keyframes berenang {
-  0% {
-    transform: translateX(-100px) scaleX(1);
-  }
-  49.999% {
-    transform: translateX(110vw) scaleX(1);
-  }
-  50% {
-    transform: translateX(110vw) scaleX(-1);
-  }
-  100% {
-    transform: translateX(-100px) scaleX(-1);
   }
 }
